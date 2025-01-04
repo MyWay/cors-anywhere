@@ -1,0 +1,22 @@
+steps:
+  - name: docker-build
+    image: woodpeckerci/plugin-kaniko
+    settings:
+      platforms: linux/amd64
+      username:
+        from_secret: REGISTRY_USERNAME
+      password:
+        from_secret: REGISTRY_PASSWORD
+      registry: registry.eggload.com
+      repo: v2/myway/cors-anywhere
+      auto_tag: true
+      auto_tag_suffix: '${WOODPECKER_COMMIT_SHA}'
+      tags:
+        - latest
+    when:
+      branch: master
+
+when:
+  - event: push
+    branch:
+      include: [master]
