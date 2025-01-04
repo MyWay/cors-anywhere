@@ -9,7 +9,7 @@ var port = process.env.PORT || 8080;
 // use originWhitelist instead.
 var originBlacklist = parseEnvList(process.env.CORSANYWHERE_BLACKLIST);
 var originWhitelist = parseEnvList(process.env.CORSANYWHERE_WHITELIST);
-var requireHeader = parseEnvList(process.env.requireHeader);
+var requireHeader = parseEnvList(process.env.REQUIRE_HEADER);
 function parseEnvList(env) {
   if (!env) {
     return [];
